@@ -22,11 +22,30 @@ function App() {
       selectedProjectId: undefined,
     }));
   };
+
+  const handleAddProject = (project) => {
+    const projectId = Math.random();
+    const newProject = {
+      ...project,
+      id: projectId,
+    };
+    setProjectState((prevState) => ({
+      ...prevState,
+      projects: [...prevState.projects, newProject],
+      selectedProjectId: projectId,
+    }));
+  };
   return (
     <main className={main}>
-      <ProjectsSidebar onStartAddProject={handleStartAddProject} />
+      <ProjectsSidebar
+        onStartAddProject={handleStartAddProject}
+        projects={projectState.projects}
+      />
       {projectState.selectedProjectId === null ? (
-        <NewProject onCancelAddProject={handleCancelAddProject} />
+        <NewProject
+          onCancelAddProject={handleCancelAddProject}
+          onAddProject={handleAddProject}
+        />
       ) : (
         <NoSelectedProject onStartAddProject={handleStartAddProject} />
       )}
