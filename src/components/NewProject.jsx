@@ -21,7 +21,6 @@ const NewProject = ({ onCancelAddProject, onAddProject }) => {
     const title = titleRef.current.value;
     const description = descriptionRef.current.value;
     const dueDate = dueDateRef.current.value;
-    console.log("dueDate", dueDate);
     if (
       title.trim() === "" ||
       description.trim() === "" ||
